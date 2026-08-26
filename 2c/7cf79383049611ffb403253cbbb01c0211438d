@@ -1,0 +1,21 @@
+up-77603-forum-comment-fanout-async/d3-room-broadcast.mmd
+  s_0b07fcdb30013d::t_82f231e75b3a50 1-9
+README.md
+  s_0b07fcdb30013d::t_cb825fc67d47a2 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "2c7cf79383049611ffb403253cbbb01c0211438d",
+  "prompts": {},
+  "sessions": {
+    "s_0b07fcdb30013d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e0eef869-8535-4e10-9c5b-12454c7d5de8",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "thucvo-everfit <thucvo@everfit.io>"
+    }
+  }
+}
