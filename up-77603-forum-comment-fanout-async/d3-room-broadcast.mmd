@@ -1,0 +1,9 @@
+flowchart LR
+    Author["Member posts<br/>a comment"]
+    API["Everfit API<br/>forum indicator step"]
+    Socket["Socket service"]
+    Room["Forum room<br/>every connected member"]
+
+    Author --> API
+    API -->|"1 event addressed<br/>to the forum"| Socket
+    Socket --> Room
