@@ -1,0 +1,25 @@
+sequenceDiagram
+    participant FE
+    participant API as everfit-api
+    participant Q as Kue queue
+    participant DB as MongoDB
+
+    FE->>API: GET get-list-autoflow-body-metric
+    API-->>FE: full catalog, Autoflow's default metrics marked selected
+
+    opt Manage Metric, create a metric not in the catalog
+        FE->>API: POST add-new-metric
+        API-->>FE: new metric
+    end
+
+    FE->>API: PUT autoflow-interval-task update-task, with metrics
+    API->>DB: updateTask, set metrics on the template
+    API->>Q: enqueue fan-out job, one per enrolled client
+
+    loop each enrolled client
+        alt not completed this occurrence
+            Q->>DB: resync client instance from template, metrics included
+        else already completed
+            Q->>DB: skip, client keeps original metrics and order
+        end
+    end

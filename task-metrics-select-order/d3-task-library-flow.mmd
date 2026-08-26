@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant FE
+    participant API as everfit-api
+    participant DB as MongoDB
+
+    FE->>API: GET get-list-trainer-default-body-metric
+    API-->>FE: full catalog, trainer's default metrics marked selected
+
+    opt Manage Metric, create a metric not in the catalog
+        FE->>API: POST add-new-metric
+        API-->>FE: new metric
+    end
+
+    FE->>API: PATCH task-libraries by id, with metrics
+    API->>DB: TaskLibrary updateOne, set metrics
+    Note over DB: tasks already assigned from this Library keep their own saved metrics
+
+    Note over FE,API: later, assigning to a client
+    FE->>API: POST add-task-from-library
+    API->>DB: read Library doc, metrics already on it
+    API->>DB: Task.create, new independent task

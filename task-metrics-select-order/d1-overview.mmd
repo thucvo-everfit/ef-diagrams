@@ -1,0 +1,11 @@
+flowchart LR
+    Cal["Client's Calendar"]
+    Lib["Task Library"]
+    Flow["Autoflow"]
+    API["everfit-api, existing endpoints"]
+    DB[("MongoDB")]
+
+    Cal --> API
+    Lib --> API
+    Flow --> API
+    API --> DB

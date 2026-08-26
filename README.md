@@ -9,6 +9,7 @@ One folder per design doc. Diagrams are numbered in the order they appear in tha
 | Folder | Design doc |
 | --- | --- |
 | `consultation-document/` | [Solution Design: Multi-Consultation Documents (BE)](https://everfit.atlassian.net/wiki/x/4wKv4w) |
+| `task-metrics-select-order/` | [Solution Design: Coach can select and order Metrics within a task (BE)](https://everfit.atlassian.net/wiki/spaces/EV/pages/3841818764/Solution+Design+Coach+can+select+and+order+Metrics+within+a+task+BE) |
 
 ## Rendering
 

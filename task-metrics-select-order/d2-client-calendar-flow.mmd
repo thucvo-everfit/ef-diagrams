@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant FE
+    participant API as everfit-api
+    participant DB as MongoDB
+
+    FE->>API: GET get-full-list-client-body-metric
+    API-->>FE: full catalog, client's shared metrics marked selected
+
+    opt Manage Metric, create a metric not in the catalog
+        FE->>API: POST add-new-metric
+        API-->>FE: new metric
+    end
+
+    alt create new task
+        FE->>API: POST v4 add-task, with metrics
+        API->>DB: Task.create, metrics saved in the order sent
+    else edit existing task
+        FE->>API: PUT v3 update-task, with taskId and metrics
+        alt already completed by client
+            API-->>FE: 400, cannot edit
+        else not completed
+            API->>DB: updateOne, set metrics
+            opt repeating task, This and Upcoming Tasks
+                API->>DB: copy metrics to future occurrences
+            end
+        end
+    end
