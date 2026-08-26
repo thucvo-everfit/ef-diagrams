@@ -1,0 +1,16 @@
+up-77603-forum-comment-fanout-async/d1-today.mmd
+  h_0d761a07356f42 1-6
+up-77603-forum-comment-fanout-async/d2-after-fix.mmd
+  h_0d761a07356f42 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "cbc88ce22c220bbf1ce9637eb16bdf9ba6f918ba",
+  "prompts": {},
+  "humans": {
+    "h_0d761a07356f42": {
+      "author": "thucvo-everfit <thucvo@everfit.io>"
+    }
+  }
+}
