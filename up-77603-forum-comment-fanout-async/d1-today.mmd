@@ -1,0 +1,6 @@
+flowchart LR
+    User["Member posts a comment"]
+    Wait["App waits here:<br/>tells every other member,<br/>one by one"]
+    Done["Comment finishes posting"]
+
+    User --> Wait --> Done

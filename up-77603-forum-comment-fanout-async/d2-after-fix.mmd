@@ -1,0 +1,7 @@
+flowchart LR
+    User["Member posts a comment"]
+    Done["Comment finishes posting<br/>(fast, no waiting)"]
+    BG["Existing background pipeline<br/>tells every other member"]
+
+    User --> Done
+    Done -.->|happens after, in the background| BG
