@@ -1,0 +1,7 @@
+flowchart LR
+    A["leave-group notify<br/>(Problem 3)"] --> R1["ForumMemberRepository.getListUser<br/>full populate, every member"]
+    C["on-forum-post-added:<br/>createNotificationByPost<br/>(Problem 4b)"] --> R1
+    R1 --> L1["sequential loop, settings-gated<br/>send cost is real but bounded by role/settings"]
+
+    B["on-forum-post-added:<br/>sendNotificationForTaggedUsers<br/>(Problem 4a)"] --> R2["ForumMemberRepository.getListUserWithoutPopulate<br/>lighter, no populate"]
+    R2 --> L2["Promise.all, uncapped parallel<br/>no return-based sequencing"]
