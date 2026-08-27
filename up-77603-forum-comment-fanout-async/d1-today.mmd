@@ -1,6 +1,18 @@
-flowchart LR
-    User["Member posts a comment"]
-    Wait["App waits here:<br/>tells every other member,<br/>one by one"]
-    Done["Comment finishes posting"]
+sequenceDiagram
+    participant C as Commenter
+    participant API as API (api-prd)
+    participant DB as MongoDB
+    participant S as Socket service
+    participant O as Another user, same ECS task
 
-    User --> Wait --> Done
+    C->>API: POST /api/comment/add
+    API->>DB: save comment
+    API->>DB: load and populate every member
+    DB-->>API: all member documents
+    Note over C,API: the only part the commenter actually waits on
+    API-->>C: 200 OK
+    Note over API,S: detached, fires as one burst, nothing awaits it
+    API->>S: about 12,800 gRPC emits (members x 2 hosts)
+    Note over API,S: keeps running about 8s after the response
+    O->>API: unrelated request, same ECS task
+    API-->>O: p95 250ms to 10.05s

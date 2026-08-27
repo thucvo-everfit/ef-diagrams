@@ -1,7 +1,16 @@
-flowchart LR
-    User["Member posts a comment"]
-    Done["Comment finishes posting<br/>(fast, no waiting)"]
-    BG["Existing background pipeline<br/>tells every other member"]
+sequenceDiagram
+    participant C as Commenter
+    participant API as API
+    participant Q as Queue, existing on-comment-added consumer
+    participant W as Worker
+    participant DB as MongoDB
+    participant S as Socket service
 
-    User --> Done
-    Done -.->|happens after, in the background| BG
+    C->>API: POST /api/comment/add
+    API->>DB: save comment
+    API->>Q: 1 message
+    API-->>C: 200 OK
+    Q->>W: on-comment-added
+    W->>DB: load and populate every member
+    W->>S: emit per member, sequential and awaited (this fix)
+    Note over W,S: bounded by the existing member cap, unchanged
