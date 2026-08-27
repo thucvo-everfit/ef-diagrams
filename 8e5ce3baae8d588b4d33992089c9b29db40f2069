@@ -1,0 +1,21 @@
+d2-create-flow.mmd
+  s_a46f649cd35c90::t_85e84acba737a4 9-10,12-15,17
+d3-delete-flow.mmd
+  s_a46f649cd35c90::t_55a4edb96b69ba 1-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "8e5ce3baae8d588b4d33992089c9b29db40f2069",
+  "prompts": {},
+  "sessions": {
+    "s_a46f649cd35c90": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4eec43b7-9320-4943-af11-55ba9f267e6a",
+        "model": "claude-opus-5"
+      },
+      "human_author": "thucvo-everfit <thucvo@everfit.io>"
+    }
+  }
+}

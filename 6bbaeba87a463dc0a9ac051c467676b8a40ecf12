@@ -1,0 +1,23 @@
+README.md
+  s_a43b6d40de5720::t_b4dcd156e26730 1-24
+consultation-document/d2-create-flow.mmd
+  s_a43b6d40de5720::t_eaab3a291200c8 8,16-17
+consultation-document/d3-delete-flow.mmd
+  s_a43b6d40de5720::t_6994915703d618 8,12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "6bbaeba87a463dc0a9ac051c467676b8a40ecf12",
+  "prompts": {},
+  "sessions": {
+    "s_a43b6d40de5720": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "999cebb4-a456-404f-a6fc-f39660e62bd2",
+        "model": "claude-opus-5"
+      },
+      "human_author": "thucvo-everfit <thucvo@everfit.io>"
+    }
+  }
+}

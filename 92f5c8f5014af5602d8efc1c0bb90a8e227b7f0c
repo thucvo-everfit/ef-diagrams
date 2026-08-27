@@ -1,0 +1,21 @@
+d2-create-flow.mmd
+  s_33c45624e10326::t_c0ca570bf9898e 9
+  s_33c45624e10326::t_23779074515a99 6-8
+  s_33c45624e10326::t_40d9154b1ad289 10-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "92f5c8f5014af5602d8efc1c0bb90a8e227b7f0c",
+  "prompts": {},
+  "sessions": {
+    "s_33c45624e10326": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "72645d16-dfea-45bf-b1c4-0982ca6d92ab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "thucvo-everfit <thucvo@everfit.io>"
+    }
+  }
+}
