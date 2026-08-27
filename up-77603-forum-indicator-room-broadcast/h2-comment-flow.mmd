@@ -1,0 +1,23 @@
+sequenceDiagram
+    autonumber
+    participant A as Actor (commenter)
+    participant API as everfit-api
+    participant W as Worker
+    participant S as everfit-socket
+    participant M as Member client (in room)
+    participant N as Member client (offline)
+
+    A->>API: POST /api/comment/add
+    API-->>A: 200 OK
+    API->>W: enqueue on-comment-added
+    W->>S: gRPC Emit receiver_id = forum_ID
+    alt socket service reachable
+        S->>M: notify_forum_indicator {groupId, actor}
+        Note over M: actor == me? ignore.<br/>else paint the badge
+    else gRPC fails after retries
+        Note over W: silently dropped,<br/>nothing is logged
+        Note over M: badge appears on next<br/>screen load from isUnread
+    end
+    Note over N: never receives the event
+    N->>API: opens the app later
+    API-->>N: isUnread from Mongo, badge correct

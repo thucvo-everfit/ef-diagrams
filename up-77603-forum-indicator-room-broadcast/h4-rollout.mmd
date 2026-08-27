@@ -1,0 +1,14 @@
+flowchart LR
+    A["1 · 6.1 membership check<br/>everfit-socket<br/>ships standalone, security fix"]
+    B["1 · 6.2 leave_room<br/>everfit-socket"]
+    D["2 · join / leave / actor filter<br/>Mobile + Web<br/>gated on app-store review"]
+    C["3 · API room broadcast<br/>BE, behind a flag"]
+    E["4 · delete cap + config<br/>BE"]
+
+    A --> C
+    B --> D
+    D --> C
+    C --> E
+
+    classDef sec fill:#ffe6e6,stroke:#d04437,stroke-width:2px
+    class A sec

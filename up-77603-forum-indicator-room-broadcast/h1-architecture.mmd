@@ -1,0 +1,24 @@
+flowchart TB
+    subgraph api["everfit-api — BE Engagement"]
+        W["on-comment-added worker"]
+        UFI["update-forum-indicators"]
+    end
+
+    DB[("MongoDB<br/>forum_indicators · isUnread")]
+
+    subgraph socketsvc["everfit-socket — owner TBD"]
+        GRPC["gRPC server<br/>RGPC_PORT · internal only"]
+        IO["Socket.IO server<br/>PORT · client facing<br/>❗ no membership check on join"]
+    end
+
+    CL["Mobile + Web clients<br/>join/leave the room, filter own actor id"]
+
+    W --> UFI
+    UFI -->|"write isUnread — source of truth"| DB
+    UFI -->|"gRPC Emit · receiver_id = forum_ID"| GRPC
+    GRPC -->|"io.to(room).emit"| IO
+    IO -.->|"notify_forum_indicator {groupId, actor}"| CL
+    CL ==>|"join_room / leave_room"| IO
+
+    classDef gap fill:#ffe6e6,stroke:#d04437,stroke-width:2px
+    class IO gap

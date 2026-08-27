@@ -10,7 +10,8 @@ One folder per design doc. Diagrams are numbered in the order they appear in tha
 | --- | --- |
 | `consultation-document/` | [Solution Design: Multi-Consultation Documents (BE)](https://everfit.atlassian.net/wiki/x/4wKv4w) |
 | `task-metrics-select-order/` | [Solution Design: Coach can select and order Metrics within a task (BE)](https://everfit.atlassian.net/wiki/spaces/EV/pages/3841818764/Solution+Design+Coach+can+select+and+order+Metrics+within+a+task+BE) |
-| `up-77603-forum-comment-fanout-async/` | [RCA UP-77603: Forum comment indicator update still runs inside the request after the hotfix](https://everfit.atlassian.net/wiki/spaces/EV/pages/3841917164/RCA+UP-77603+Forum+comment+indicator+update+still+runs+inside+the+request+after+the+hotfix) |
+| `up-77603-forum-comment-fanout-async/` | [RCA UP-77603: Forum comment indicator fan-out](https://everfit.atlassian.net/wiki/x/7AD-5) |
+| `up-77603-forum-indicator-room-broadcast/` | [Forum Indicator Room Broadcast — High-Level Solution (UP-77603)](https://everfit.atlassian.net/wiki/x/pAAq5Q) |
 
 ## Rendering
 

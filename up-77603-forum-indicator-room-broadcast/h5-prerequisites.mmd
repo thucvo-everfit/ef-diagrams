@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph missing["Confirmed missing in everfit-socket"]
+        P1["6.1 · Membership check on join_room<br/>LIVE GAP TODAY — any user joins any room"]
+        P2["6.2 · leave_room handler<br/>no counterpart to join_room exists"]
+    end
+
+    subgraph newreq["New requirement this design introduces"]
+        P3["6.3 · Actor self-filter on every client<br/>server no longer excludes the author"]
+        P4["6.4 · Client join/leave lifecycle<br/>Web: yes · iOS/Android: UNKNOWN"]
+    end
+
+    SHIP["Room broadcast ships"]
+
+    P1 --> SHIP
+    P2 --> P4
+    P3 --> SHIP
+    P4 --> SHIP
+
+    classDef gap fill:#ffe6e6,stroke:#d04437,stroke-width:2px
+    classDef new fill:#fff4e0,stroke:#ff8b00,stroke-width:2px
+    class P1,P2 gap
+    class P3,P4 new

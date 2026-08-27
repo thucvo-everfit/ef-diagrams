@@ -1,0 +1,14 @@
+stateDiagram-v2
+    [*] --> Connected: socket auth<br/>auto-joins profile + team rooms
+    Connected --> InForumRoom: opens a forum<br/>emit join_room
+    InForumRoom --> Connected: leaves the forum<br/>emit leave_room
+    InForumRoom --> Disconnected: connection lost
+    Disconnected --> Connected: reconnect<br/>then re-emit join_room
+    InForumRoom --> [*]: app closed
+
+    note right of InForumRoom
+        leave_room does not exist today.
+        Opening forum A then forum B
+        leaves the client in both rooms
+        until the socket drops.
+    end note

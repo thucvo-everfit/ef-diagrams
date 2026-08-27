@@ -1,0 +1,37 @@
+flowchart TB
+    subgraph fam1["Family 1 — fan-out fires without being awaited"]
+        direction LR
+        A["A · on-forum-post-added:82 — P0"]
+        D["D · forum-comment-added.js:52 — P1"]
+        E["E · forum-post-reply-comment-added.js:37 — P1"]
+        I["I · scan-upcoming-posts:45 — P2"]
+        FIX1["Fix: return the chain and await it<br/>~1 line each + a unit test"]
+        A --> FIX1
+        D --> FIX1
+        E --> FIX1
+        I --> FIX1
+    end
+
+    subgraph fam2["Family 2 — populated getListUser before filtering"]
+        direction LR
+        G["G · createNotificationByPost:19 — P2"]
+        H["H · leave-group notify:16 — P2"]
+        FIX2["Fix: filter server-side<br/>check the index first"]
+        G --> FIX2
+        H --> FIX2
+    end
+
+    subgraph solo["Own shape, own fix"]
+        direction LR
+        F["F · sendNotificationForTaggedUsers:34 — P1<br/>needs a concurrency ceiling"]
+        B["B · add-client-to-forum:69 — P0 if multi-member traffic<br/>missing return + swallowed errors"]
+        C["C · everfit-socket join_room:51 — P0, NOT OURS<br/>no membership check"]
+    end
+
+
+
+    FIX1 ~~~ G
+    FIX2 ~~~ F
+
+    classDef p0 fill:#ffe6e6,stroke:#d04437,stroke-width:2px
+    class A,B,C p0
