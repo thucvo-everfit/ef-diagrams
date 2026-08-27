@@ -5,11 +5,15 @@ flowchart TB
         D["D · forum-comment-added.js:52 — P1"]
         E["E · forum-post-reply-comment-added.js:37 — P1"]
         I["I · scan-upcoming-posts:45 — P2"]
+        J["J · add-user:42 — P2"]
+        K["K · remove-user-from-cms:21 — P1"]
         FIX1["Fix: return the chain and await it<br/>~1 line each + a unit test"]
         A --> FIX1
         D --> FIX1
         E --> FIX1
         I --> FIX1
+        J --> FIX1
+        K --> FIX1
     end
 
     subgraph fam2["Family 2 — populated getListUser before filtering"]
@@ -24,11 +28,9 @@ flowchart TB
     subgraph solo["Own shape, own fix"]
         direction LR
         F["F · sendNotificationForTaggedUsers:34 — P1<br/>needs a concurrency ceiling"]
-        B["B · add-client-to-forum:69 — P0 if multi-member traffic<br/>missing return + swallowed errors"]
+        B["B · add-client-to-forum:69 — P0<br/>missing return + swallowed errors"]
         C["C · everfit-socket join_room:51 — P0, NOT OURS<br/>no membership check"]
     end
-
-
 
     FIX1 ~~~ G
     FIX2 ~~~ F

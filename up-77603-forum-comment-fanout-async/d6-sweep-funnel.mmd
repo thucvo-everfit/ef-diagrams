@@ -1,0 +1,23 @@
+flowchart LR
+    A["<b>108</b> forum-area flows<br/>forum · forum-post · forum-member<br/>public-api · workers · notification"]
+    B["<b>30</b> matched the risk pattern<br/>multi-recipient fan-out<br/>or full member-list load<br/><i>read line by line</i>"]
+    C["<b>78</b> no fan-out, no member load<br/>excluded by pattern"]
+
+    D["<b>10 flows · 11 defects</b><br/>this repo"]
+    E["<b>5</b> uncapped but awaited<br/>concurrency concern only"]
+    F["<b>15</b> clean or by design"]
+    G["<b>1 defect</b><br/>everfit-socket"]
+
+    A --> B
+    A --> C
+    B --> D
+    B --> E
+    B --> F
+    D -.->|"plus, outside this repo"| G
+
+    classDef bad fill:#ffe6e6,stroke:#d04437,stroke-width:2px
+    classDef warn fill:#fff4e0,stroke:#ff8b00,stroke-width:2px
+    classDef ok fill:#e6f4ea,stroke:#2e7d32
+    class D,G bad
+    class E warn
+    class F ok
