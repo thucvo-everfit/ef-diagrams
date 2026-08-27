@@ -1,0 +1,21 @@
+up-77603-forum-comment-fanout-async/d5-fix-families.mmd
+  s_0ea8f65c6be3b9::t_e394f8cb98c7e0 8-9,15-16,31
+up-77603-forum-comment-fanout-async/d6-sweep-funnel.mmd
+  s_0ea8f65c6be3b9::t_fffc895ec0df87 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.0",
+  "base_commit_sha": "00b49edabf8f11ca94a14c477374846b53703e72",
+  "prompts": {},
+  "sessions": {
+    "s_0ea8f65c6be3b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52c3bc66-f156-43b3-8196-4f0c7fede91b",
+        "model": "claude-opus-5"
+      },
+      "human_author": "thucvo-everfit <thucvo@everfit.io>"
+    }
+  }
+}
