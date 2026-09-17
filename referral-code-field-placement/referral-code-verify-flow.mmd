@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant FE as Signup form
+    participant API as authentication
+    participant DB as MongoDB
+
+    Note over FE,API: no account yet. Web sends a token, mobile does not, neither is read
+    FE->>API: POST /verify-referral-code
+    API->>DB: profile, then affiliate
+    API-->>FE: 200 referralObj, or 400 not found
+    FE->>API: POST /register { referral_code }
+    API->>DB: same lookup again, then Profile.create
