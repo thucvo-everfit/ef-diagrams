@@ -1,0 +1,19 @@
+referral-code-field-placement/referral-code-verify-flow.mmd
+  s_96f12a228ebe79::t_25047186b14132 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "6b066709673a963eb97a75729c2659f68c7dde17",
+  "prompts": {},
+  "sessions": {
+    "s_96f12a228ebe79": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "44f7c64c-affb-4425-88c2-10d61eea52f5",
+        "model": "claude-opus-5"
+      },
+      "human_author": "thucvo-everfit <thucvo@everfit.io>"
+    }
+  }
+}
